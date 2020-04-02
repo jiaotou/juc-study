@@ -8,7 +8,7 @@ public class ResponsibilityTest {
 
     public static void main(String[] args) {
         LeaveRequest request = new LeaveRequest();
-        request.setLeaveDays(20);
+        request.setLeaveDays(35);
         request.setName("藠头SSS");
 
         AbstractLeaveHandler directLeaderLeaveHandler = new DirectLeaderLeaveHandler("县令");

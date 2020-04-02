@@ -19,6 +19,8 @@ public class DirectLeaderLeaveHandler extends AbstractLeaveHandler {
         if (request.getLeaveDays() <= this.MIN) {
             System.out.println("直接主管:" + handlerName + "已经处理,流程结束。");
             return;
+        } else {
+            System.out.println("直接主管:" + handlerName + "已经处理,等待上级领导审批");
         }
         if (null != this.nextHandler) {
             this.nextHandler.handleRequest(request);

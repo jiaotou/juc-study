@@ -19,6 +19,8 @@ public class DeptManagerLeaveHandler extends AbstractLeaveHandler {
         if (request.getLeaveDays() <= this.MIDDLE) {
             System.out.println("部门经理:" + handlerName + "已经处理,流程结束。");
             return;
+        } else {
+            System.out.println("部门经理:" + handlerName + "已经处理,等待上级领导审批");
         }
         if (null != this.nextHandler) {
             this.nextHandler.handleRequest(request);
