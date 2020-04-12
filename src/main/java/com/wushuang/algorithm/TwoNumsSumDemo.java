@@ -1,5 +1,7 @@
 package com.wushuang.algorithm;
 
+import jdk.nashorn.internal.parser.JSONParser;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +28,8 @@ public class TwoNumsSumDemo {
     public static void main(String[] args) throws IllegalArgumentException {
         int[] nums = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         int target = 9;
-        System.out.println(getTwoNumsSum(nums, target));
+        int[] result = getTwoNumsSum(nums, target);
+        System.out.println("" + result[0] + result[1]);
+        System.out.println("" + getTwoNumsSum(nums, target));
     }
 }

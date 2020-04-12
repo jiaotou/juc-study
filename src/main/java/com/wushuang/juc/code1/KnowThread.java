@@ -27,6 +27,7 @@ public class KnowThread {
         System.out.println(Thread.currentThread().getName() + "运行");
         try {
             a.start();
+            a.sleep(50000);
             a.join();
             new Thread(b).start();
         } catch (InterruptedException e) {

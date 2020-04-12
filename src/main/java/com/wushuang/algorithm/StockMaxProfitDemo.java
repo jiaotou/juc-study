@@ -8,6 +8,12 @@ package com.wushuang.algorithm;
  */
 public class StockMaxProfitDemo {
 
+    /**
+     * 解题思路：计算最小值和最大差值
+     *
+     * @param arr
+     * @return
+     */
     private static int getMaxProfit(int[] arr) {
         int len = arr.length;
         if (len < 2) {
@@ -27,6 +33,13 @@ public class StockMaxProfitDemo {
         return maxProfit;
     }
 
+    /**
+     * 主要思路是：比较相邻两个价格的大小，如果后面的价格大于前面的价格，则是盈利
+     * 如果后面的价格小于前面的价格则不计入盈利，体现到操作上面就是不买进不卖出
+     *
+     * @param arr
+     * @return
+     */
     public static int maxProfitMuli(int[] arr) {
         int len = arr.length;
         if (len < 2) {
