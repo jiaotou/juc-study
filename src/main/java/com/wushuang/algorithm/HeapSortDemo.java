@@ -30,6 +30,13 @@ public class HeapSortDemo {
         }
     }
 
+    /**
+     * 重新构造堆
+     *
+     * @param list 要排序的数组
+     * @param len  数组长度
+     * @param i    数组下标
+     */
     private static void headAndSwap(int[] list, int len, int i) {
         int k = i, temp = list[i], index = 2 * k + 1;
         while (index < len) {
@@ -47,5 +54,66 @@ public class HeapSortDemo {
             }
         }
         list[k] = temp;
+    }
+
+    public static void adjustHeap(int[] arr, int root, int n) {
+        while (root <= n / 2) {
+            int left = 2 * root;
+            int right = 2 * root + 1;
+            int temp;
+            if (right <= n) {
+                temp = arr[left] < arr[right] ? left : right;
+            } else {
+                temp = left;
+            }
+            if (arr[root] > arr[temp]) {
+                swap(arr, root, temp);
+                root = temp;
+
+            } else {
+                break;
+            }
+        }
+    }
+
+    public static void sort(int[] array) {
+        int[] arr = new int[array.length + 1];
+        for (int index = 1, i = 0; i < array.length; i++, index++) {
+            arr[index] = array[i];
+        }
+
+        createHeap(arr);
+
+        int count = 0;
+        do {
+            swap(arr, 1, arr.length - 1 - count);
+            adjustHeap(arr, 1, arr.length - 2 - count);
+            count++;
+        } while (count <= arr.length - 1);
+
+        for (int index = 1, i = 0; index < arr.length; i++, index++) {
+            array[i] = arr[index];
+        }
+    }
+
+    /**
+     * adjustHeap相当于fixdown，本函数中root--相当于fixup
+     * 建立完堆后，每次只需要对根进行fixdown
+     *
+     * @param arr
+     */
+    public static void createHeap(int[] arr) {
+        //TODO 这里应该是length吧
+        int n = arr.length - 1;
+        for (int root = n / 2; root >= 1; root--) {
+            adjustHeap(arr, root, n);
+
+        }
+    }
+
+    private static void swap(int[] arr, int a, int b) {
+        int aa = arr[a];
+        arr[a] = arr[b];
+        arr[b] = aa;
     }
 }
