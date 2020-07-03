@@ -1,6 +1,7 @@
 package com.wushuang.algorithm;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -35,7 +36,38 @@ public class FindPrimeNumberDemo {
         return res;
     }
 
+    /**
+     * 统计N之内有多少个素数
+     *
+     * @param n 目标值
+     * @return 结果值
+     */
+    public static int countPrime(int n) {
+        // 创建一个数组来存放是否是素数
+        boolean[] isPrim = new boolean[n];
+        // 首先将所有的数都默认为素数压入数组
+        Arrays.fill(isPrim, true);
+        // 然后从2开始遍历，遍历到sqrt(n)
+        for (int i = 2; i * i < n; i++) {
+            // 判断如果是素数,那么将当前素数的倍数设置为非素数
+            if (isPrim[i]) {
+                // 将当前素数的倍数设置为非素数
+                for (int j = i * i; j < n; j += i) {
+                    isPrim[j] = false;
+                }
+            }
+        }
+        int count = 0;
+        for (int i = 2; i < n; i++) {
+            if (isPrim[i]) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
-        System.out.println(findPrime(10000));
+        System.out.println(findPrime(100));
+        System.out.println(countPrime(100));
     }
 }
